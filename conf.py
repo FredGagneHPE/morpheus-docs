@@ -13,17 +13,17 @@ latex_documents = [
 
 rst_prolog = """
 
-.. |releasedate| replace:: TBD
+.. |releasedate| replace:: October 15, 2026
 .. |releasetype| replace:: Feature
 .. |morphAnnualVer| replace:: v9
 .. |morphbranch| replace:: v9.1
 .. |morphver| replace:: v9.1.0
-.. |minUpgradeVer| replace:: v6.0.0
+.. |minUpgradeVer| replace:: v8.0.13
 .. |minRollingUpgradeVer| replace:: v9.0.0
-.. |nonRollingUpgradeVer| replace:: v8.0.4
+.. |nonRollingUpgradeVer| replace:: v8.0.13
 .. |previousMorphVer| replace:: v9.0.0
-.. |pluginVer| replace:: 1.4.1
-.. |workerVer| replace:: 9.0.0
+.. |pluginVer| replace:: 1.5.0
+.. |workerVer| replace:: 9.1.0
 .. |rmqbranch| replace:: v3.5-3.13
 .. |rmqver| replace:: v3.13.7
 .. |mysqlbranch| replace:: v8.0
@@ -34,10 +34,10 @@ rst_prolog = """
 .. |tcver| replace:: v9.0.106
 .. |nginxver| replace:: v1.26.2
 .. |nodePackageVer| replace:: 3.3.11
-.. |linuxagentver| replace:: v4.0.0
+.. |linuxagentver| replace:: v4.0.1
 .. |macagentver| replace:: v2.4.0
 .. |winagentver| replace:: v2.6.1.0
-.. |java| replace:: 17.0.14+7
+.. |java| replace:: 25.0.2+10
 .. |java-mac| replace:: 11.0.14+9
 .. |openjdk-jre| replace:: 17.0.14+7
 .. |openjdk-elasticsearch| replace::  17.0.5+8

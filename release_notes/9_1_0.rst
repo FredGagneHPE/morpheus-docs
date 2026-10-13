@@ -8,14 +8,11 @@ v9.1.0 Release Notes
 
 - Compatible Plugin API version: |pluginVer|
 - Compatible |morpheus| Worker version: |workerVer|
-- Minimum upgrade version: v9.0.0. Upgrading to v9.1.0 requires a non-rolling upgrade.
+- Minimum upgrade versions: Non-rolling: |minUpgradeVer|, Rolling: |minRollingUpgradeVer|
 
 Release Dates
 
 - |morphver| |releasedate|
-
-..
-   TODO before publish: set |releasedate| in conf.py and confirm |workerVer|, |pluginVer| and agent/node package versions. Reviewed against Jira fixVersion "Morpheus 9.1.0" on October 5, 2026.
 
 .. important:: After upgrading to |morphver|, it is recommended to check for HVM Host agent upgrades as well. To upgrade HVM Host agents, navigate to the detail page for each HVM Host, expand the ACTIONS menu, and click "Upgrade Agent." This process must be undertaken on all HVM Hosts. Alternatively, you may select "Download Agent Script" to download a shell script to handle the upgrade. Connect to the HVM Host over a terminal session and run the downloaded script. The scripts are unique to each HVM Host so you must download all required scripts and run the correct script against the correct HVM Host. Though many do, it is possible that some version upgrade hops will not contain an HVM Host agent upgrade.
 
@@ -27,6 +24,7 @@ New Features
 :Licensing: - Introduced the **Advanced** license tier, expanding the platform to three tiers: VM Essentials, Advanced, and Enterprise. Advanced includes Ansible, Kubernetes (HKS), Workflows, Service Catalog, Personas, and additional automation and integration capabilities. See :doc:`/release_notes/feature_matrix` for the complete tier comparison.
 
 :HVM & VM Essentials: - Virtual Switch management: add, edit, and remove virtual switches with advanced port group management and network reconfiguration directly from the UI
+                      - OVS Bridge Domain virtual switches: create and delete OVS Bridge Domains, with discovery and synchronization during HVM cluster refresh and when adding or removing hosts
                       - Linux-bridge/virtSwitch integration for Standard, Private, and Data Networks, with virtual switch discovery, per-host uplink mapping, and multiple iSCSI VLAN segments on one switch
                       - Add Host wizard improvements: probe NICs, validate compatibility, and map the new host's interfaces to cluster virtual switches
                       - NVIDIA vGPU slicing: create SR-IOV vGPU profiles on supported HVM Hosts and bind physical GPU types or vGPU Segment Types to Service Plans
@@ -58,6 +56,7 @@ New Features
                       - vCPU Placement: cluster-level CPU affinity management with Unmanaged, Region, and Pinned modes for NUMA-aware workload performance
                       - Improved audit logging: administrative actions (datastore changes, cluster settings, VM promotions) now recorded in object History for full traceability
                       - HVM OS 26.04 and QEMU 10.2 machine-type support with cluster layout 2.0
+                      - The ``sosreport`` utility is included in the HVM host image for support diagnostics
                       - Host NTP configuration and improved guest timekeeping with RTC catchup and kvmclock for Linux guests
 
 :Monitoring & Administration: - Monitoring tab time ranges for instance, server, and cluster details, allowing analysis over configurable periods
@@ -105,6 +104,7 @@ New Features
                            - Unified & Contextual Approval Framework for consistent approval workflows across provisioning operations
                            - Import existing systems into |morpheus| for management without reprovisioning
                            - Provider-driven update actions for supported clusters, compute, storage, and network servers
+                           - Pre-upgrade checks validate the appliance before upgrades, including remote upgrades initiated from Morpheus Central
                            - Simplified HVM installation and a unified Windows/macOS installer for VM Essentials Manager and Morpheus deployments
                            - Distributed Worker support for iLO consoles and HVM console connections
                            - Embedded Commvault, Veeam, and UpCloud integrations are removed from the core product and are delivered as plugins
@@ -217,3 +217,16 @@ Appliance & Agent Updates
 :Plugin API: - Updated to |pluginVer|
 
 .. note:: Dependency updates include jackson-databind and Tomcat.
+
+HPE Bare Metal (BMaaS) 2.1.0
+============================
+
+HPE Bare Metal as a Service (BMaaS) 2.1.0 is released in conjunction with |morphver|.
+
+- HPE Bare Metal (BMaaS) version: 2.1.0
+- |morpheus| API version: |pluginVer|
+- Minimum |morpheus| appliance version: |morphver|
+
+**Known Issues**
+
+- **Bare Metal multinode instances:** Instance creation with a scale factor of 2 (multinode instances) fails when using shared, unshared, or existing attached volumes due to volume binding conflicts during the concurrent multinode scale phase. Deploy single-node instances, or attach volumes after initial provisioning.
