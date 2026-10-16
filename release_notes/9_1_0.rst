@@ -206,6 +206,8 @@ Known Issues
                 - A Distributed Worker can drop a Windows agent session on reconnect
                 - Hostname updates can intermittently fail during server build
 
+.. note:: On stretch clusters running HVM OS 24.04, some VMs on the surviving site can report guest I/O errors or read-only filesystems after a site failover because of a GFS2/DLM kernel defect. A guest-only reboot does not clear the condition; Host-level recovery is required. See :ref:`hvm-stretch-guest-io-errors` for the recovery steps. The HVM OS 26.04 kernel includes the upstream fix, pending validation.
+
 Appliance & Agent Updates
 =========================
 
