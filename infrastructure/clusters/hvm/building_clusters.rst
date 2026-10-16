@@ -45,7 +45,7 @@ Cluster Creation
       * - Field
         - Description
       * - SSH Hosts
-        - Comma-separated IP addresses of all hosts
+        - Comma-separated IP addresses of all hosts. Host names are not entered here. The Hostname field is collected only when adding a host to an existing cluster — see :doc:`managing_hosts`
       * - SSH Port
         - SSH port (default: 22)
       * - Username

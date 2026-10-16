@@ -23,8 +23,38 @@ Procedure
 
 #. Navigate to ``Infrastructure > Clusters > [Cluster]``
 #. Click :guilabel:`+ Add Worker`
-#. Provide the new host's SSH IP, hostname, and credentials
+#. On the Name step, provide the host's Name, SSH IP, and credentials
+#. On the Configure step, expand :guilabel:`Advanced` to set the Hostname:
+
+   .. list-table::
+      :widths: 30 70
+      :header-rows: 1
+
+      * - Field
+        - Description
+      * - Name
+        - Display name for the host in |morpheus|
+      * - Hostname
+        - Short host name for the node. Leave it blank to reuse the Name
+
 #. Click :guilabel:`Complete`
+
+Host Name Semantics
+^^^^^^^^^^^^^^^^^^^
+
+The Hostname field sets the host name of the |hvm| node itself. It is not a DNS record |morpheus| creates.
+
+- **Short name only** — Enter ``hvm-host-04``, not ``hvm-host-04.example.com``. A value containing a dot is rejected
+
+- **Blank reuses the Name** — |morpheus| falls back to the host's Name when Hostname is empty
+
+- **Applied to the node on layouts 1.4 and 2.0** — |morpheus| runs ``hvmcli node configure hostname`` during the first provisioning sync
+
+- **Recorded in |morpheus| only on layout 1.3** — The value must already match the host name set on the node
+
+- **Must match what the node reports** — Corosync reports the node's own host name, and |morpheus| matches that value to resolve cluster member status. A mismatch leaves member status unresolved
+
+- **Later changes are not detected** — Change the host name on the node and in |morpheus| together
 
 What Happens Automatically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
